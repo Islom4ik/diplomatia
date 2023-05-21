@@ -71,6 +71,6 @@ bot.on("channel_post", async ctx => {
 
 bot.startWebhook('/', null, 3000);
 
-bot.launch({dropPendingUpdates: true});
+// bot.launch({dropPendingUpdates: true});
 process.once('SIGINT', () => bot.stop('SIGINT'));
 process.once('SIGTERM', () => bot.stop('SIGTERM'));
