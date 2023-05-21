@@ -1,9 +1,12 @@
 const { Telegraf } = require('telegraf');
 require('dotenv').config()
 const bot = new Telegraf(process.env.BOT_TOKEN);
+bot.telegram.setWebhook(`https://diplomatia-production.up.railway.app`);
+
 
 bot.start(async ctx => {
     try {
+        console.log(ctx);
         await ctx.reply('Мой функционал работает только в группе "ДИПЛОМАТИЯ"')
     } catch (e) {
         console.error(e);
@@ -12,6 +15,7 @@ bot.start(async ctx => {
 
 bot.help(async ctx => {
     try {
+        console.log(ctx);
         await ctx.reply('Мой функционал работает только в группе "ДИПЛОМАТИЯ"')
     } catch (e) {
         console.error(e);
@@ -64,6 +68,8 @@ bot.on("channel_post", async ctx => {
        console.error(e); 
     }
 })
+
+bot.startWebhook('/', null, 3000);
 
 bot.launch({dropPendingUpdates: true});
 process.once('SIGINT', () => bot.stop('SIGINT'));
