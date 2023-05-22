@@ -1,7 +1,7 @@
 const { Telegraf } = require('telegraf');
 require('dotenv').config()
 const bot = new Telegraf(process.env.BOT_TOKEN);
-bot.telegram.setWebhook(`https://diplomatia-production.up.railway.app`);
+bot.telegram.setWebhook(`https://diplomatia-production.up.railway.app`, {max_connections: 50});
 
 
 bot.start(async ctx => {
